@@ -53,7 +53,7 @@ Error generating stack: `+e.message+`
     height: auto;
     display: block;
   }
-`,Zv="/assets/scooter-CvST_Iy1.png",Vv=()=>_t.jsx(Qv,{children:_t.jsx("img",{src:Zv,alt:"Scooter"})}),Lv=ta.div`
+`,Zv="/scooter/assets/scooter-CvST_Iy1.png",Vv=()=>_t.jsx(Qv,{children:_t.jsx("img",{src:Zv,alt:"Scooter"})}),Lv=ta.div`
   text-align: left;
   margin-bottom: 24px;
 
