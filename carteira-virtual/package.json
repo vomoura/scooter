@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "homepage": "https://vomoura.github.io/scooter",
+=======
+  "homepage": "https://vomoura.github.io/scooter",  
+>>>>>>> 37edec01f7d7c5b41a6e53b74cb7bd19f834406d
   "name": "carteira-virtual",
   "private": true,
   "version": "0.0.0",
