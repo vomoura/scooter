@@ -1,6 +1,6 @@
 import React from 'react'
 import { HeroWrapper } from './Hero.styles'
-import scooter from '../../assets/scooter.png'
+import scooter from '../../../public/scooter.png'
 
 export const Hero: React.FC = () => (
   <HeroWrapper>
