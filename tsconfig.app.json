@@ -2,19 +2,23 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "lib": ["DOM", "ESNext"],
+    "composite": true,                   
     "jsx": "react-jsx",
     "strict": true,
-    "moduleResolution": "Node",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-
-    // <-- adicionamos isso:
-    "typeRoots": ["node_modules/@types", "src/styles"]
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "esModuleInterop": true,             
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true                 
   },
-
-  // <-- garantimos que o TS processe tudo em src:
-  "include": ["src"]
+  "include": [
+    "src",
+    "src/styled.d.ts"                    
+  ],
+  "exclude": [
+    "node_modules",
+    "types"
+  ]
 }
