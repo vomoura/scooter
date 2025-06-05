@@ -15,7 +15,7 @@
   },
   "include": [
     "src",
-    "src/styled.d.ts"                    
+    "src/styles/styled.d.ts"
   ],
   "exclude": [
     "node_modules",
