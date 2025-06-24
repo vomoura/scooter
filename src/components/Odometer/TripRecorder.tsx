@@ -15,6 +15,7 @@ interface TripRecorderProps {
 
 export const TripRecorder: React.FC<TripRecorderProps> = ({ onDistance }) => {
   const [start, setStart] = useState<Coords | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
   const getCurrentPosition = (): Promise<Coords> => {
     return new Promise((resolve, reject) => {
@@ -34,7 +35,10 @@ export const TripRecorder: React.FC<TripRecorderProps> = ({ onDistance }) => {
     try {
       const coords = await getCurrentPosition()
       setStart(coords)
+      setError(null)
     } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err)
+      setError(msg)
       console.error(err)
     }
   }
@@ -46,7 +50,10 @@ export const TripRecorder: React.FC<TripRecorderProps> = ({ onDistance }) => {
       const distance = await fetchDistance(start, end)
       onDistance(distance)
       setStart(null)
+      setError(null)
     } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err)
+      setError(msg)
       console.error(err)
     }
   }
@@ -97,6 +104,7 @@ export const TripRecorder: React.FC<TripRecorderProps> = ({ onDistance }) => {
       <button onClick={endTrip} disabled={!start}>
         Finalizar
       </button>
+      {error && <p role="alert">{error}</p>}
     </div>
   )
 }
