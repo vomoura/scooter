@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+
 import { Hero } from './components/Hero/Hero'
 import { Specs } from './components/Specs/Specs'
 import { DocButton } from './components/DocButton/DocButton'
@@ -30,6 +30,7 @@ export const App: React.FC = () => {
   const addDistance = (km: number) => setTotalKm((prev) => prev + km)
 
   return (
+
     <Container>
       <Hero />
       <Content>
@@ -44,6 +45,7 @@ export const App: React.FC = () => {
         </DocButton>
       </Content>
     </Container>
+
   )
 }
 
