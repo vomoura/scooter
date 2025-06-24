@@ -4,6 +4,6 @@
 // once the script finishes loading. Declare the property here so TypeScript is
 // aware of it across the project.
 interface Window {
-  google: any
+  google: typeof google
 }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 
+
 interface Coords {
   lat: number
   lng: number
@@ -65,7 +66,7 @@ export const TripRecorder: React.FC<TripRecorderProps> = ({ onDistance }) => {
     const key = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
     if (!key) throw new Error('Google Maps API key missing')
 
-    type GoogleMaps = typeof window.google
+    type GoogleMaps = typeof google
 
     const loadMaps = (): Promise<GoogleMaps> => {
       if (window.google) return Promise.resolve(window.google)
