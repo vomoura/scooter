@@ -63,10 +63,10 @@ export const TripRecorder: React.FC<TripRecorderProps> = ({ onDistance }) => {
   return (
     <div>
       <button onClick={startTrip} disabled={!!start}>
-        Start Trip
+        Iniciar
       </button>
       <button onClick={endTrip} disabled={!start}>
-        End Trip
+        Finalizar
       </button>
     </div>
   )
