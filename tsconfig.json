@@ -1,16 +1,22 @@
 // tsconfig.json  (você executa `tsc -b` aqui)
 {
-  "files": ["src/styles/styled.d.ts"],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
   "compilerOptions": {
     "module": "ESNext",
-    "target": "ESNext", 
+    "target": "ESNext",
     "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "types",
     "skipLibCheck": true
-  }
+  },
+  "files": [
+    "src/styles/styled.d.ts"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
