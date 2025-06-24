@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 node_modules/
 build/
+types/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
