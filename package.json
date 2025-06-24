@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --build tsconfig.app.json tsconfig.node.json && vite build",
+    "build": "tsc --build tsconfig.app.json && vite build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "lint": "eslint .",
