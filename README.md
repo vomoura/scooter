@@ -73,9 +73,15 @@ Create a production build:
 npm run build
 ```
 
+Run the test suite:
+
+```bash
+npm test
+```
+
 ### Deployment
 
-This project can be deployed to GitHub Pages using the provided script:
+This project can be deployed to GitHub Pages using the provided script (it will build the project automatically):
 
 ```bash
 npm run deploy
