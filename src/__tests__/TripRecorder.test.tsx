@@ -18,27 +18,27 @@ describe('TripRecorder', () => {
       configurable: true,
     })
 
-    ;(window as any).google = {
-      maps: {
-        importLibrary: jest.fn().mockResolvedValue(undefined),
-        DirectionsService: jest.fn(() => ({
-          route: jest.fn().mockResolvedValue({
-            routes: [
-              {
-                legs: [{ distance: { value: 1000 } }],
-              },
-            ],
-          }),
-        })),
-        LatLng: function (lat: number, lng: number) {
-          this.lat = lat
-          this.lng = lng
+      ; (window as any).google = {
+        maps: {
+          importLibrary: jest.fn().mockResolvedValue(undefined),
+          DirectionsService: jest.fn(() => ({
+            route: jest.fn().mockResolvedValue({
+              routes: [
+                {
+                  legs: [{ distance: { value: 1000 } }],
+                },
+              ],
+            }),
+          })),
+          LatLng: function (this: any, lat: number, lng: number) {
+            this.lat = lat;
+            this.lng = lng;
+          },
+          TravelMode: { DRIVING: 'DRIVING' },
         },
-        TravelMode: { DRIVING: 'DRIVING' },
-      },
-    }
+      }
 
-    ;(import.meta as any).env = { VITE_GOOGLE_MAPS_API_KEY: 'test' }
+      ; (import.meta as any).env = { VITE_GOOGLE_MAPS_API_KEY: 'test' }
 
     render(<TripRecorder onDistance={onDistance} />)
 

@@ -5,6 +5,7 @@ import { Specs } from './components/Specs/Specs'
 import { DocButton } from './components/DocButton/DocButton'
 import { Odometer } from './components/Odometer/Odometer'
 import { TripRecorder } from './components/Odometer/TripRecorder'
+import styled from 'styled-components'
 
 const Container = styled.div`
   background: ${({ theme }) => theme.colors.card};
