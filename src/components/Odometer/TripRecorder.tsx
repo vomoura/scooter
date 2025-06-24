@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 // Google Maps namespace will be provided by the script loader and added to
-// the global window object. The explicit interface is declared in
-// `src/vite-env.d.ts` so we can safely reference `window.google`.
+// the global window object. The interface in `src/vite-env.d.ts` declares
+// `google` so we can safely reference `window.google`.
 
 interface Coords {
   lat: number
@@ -60,7 +60,7 @@ export const TripRecorder: React.FC<TripRecorderProps> = ({ onDistance }) => {
     const key = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
     if (!key) throw new Error('Google Maps API key missing')
 
-    type GoogleMaps = typeof window.google
+    type GoogleMaps = typeof google
 
     const loadMaps = (): Promise<GoogleMaps> => {
       if (window.google) return Promise.resolve(window.google)
