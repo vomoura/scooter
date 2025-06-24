@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+
 interface Coords {
   lat: number
   lng: number
@@ -47,16 +48,43 @@ export const TripRecorder: React.FC<TripRecorderProps> = ({ onDistance }) => {
     }
   }
 
+
+  /**
+   * Loads the Maps JavaScript API and calculates the distance between two
+   * points using the client-side DirectionsService. The web service version
+   * does not support CORS, so it cannot be called directly from the browser.
+   */
   const fetchDistance = async (orig: Coords, dest: Coords): Promise<number> => {
     const key = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
     if (!key) throw new Error('Google Maps API key missing')
-    const url =
-      `https://maps.googleapis.com/maps/api/directions/json?origin=${orig.lat},${orig.lng}` +
-      `&destination=${dest.lat},${dest.lng}&key=${key}`
-    const res = await fetch(url)
-    const data = await res.json()
-    const meters =
-      data.routes?.[0]?.legs?.[0]?.distance?.value ?? 0
+
+    type GoogleMaps = typeof window.google
+
+    const loadMaps = (): Promise<GoogleMaps> => {
+      if (window.google) return Promise.resolve(window.google)
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src =
+          `https://maps.googleapis.com/maps/api/js?key=${key}&libraries=routes`
+        script.async = true
+        script.onload = () => resolve(window.google)
+        script.onerror = () => reject(new Error('Failed to load Google Maps'))
+        document.head.appendChild(script)
+      })
+    }
+
+    const maps = await loadMaps()
+    // load the routes library which provides DirectionsService
+    await maps.maps.importLibrary('routes')
+
+    const service = new maps.maps.DirectionsService()
+    const { routes } = await service.route({
+      origin: new maps.maps.LatLng(orig.lat, orig.lng),
+      destination: new maps.maps.LatLng(dest.lat, dest.lng),
+      travelMode: maps.maps.TravelMode.DRIVING,
+    })
+    const meters = routes?.[0]?.legs?.[0]?.distance?.value ?? 0
+
     return meters / 1000
   }
 
