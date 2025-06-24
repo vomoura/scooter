@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
-// Google Maps namespace provided by the script loader
-declare const google: any
+// Google Maps namespace will be provided by the script loader and added to
+// the global window object. The explicit interface is declared in
+// `src/vite-env.d.ts` so we can safely reference `window.google`.
 
 interface Coords {
   lat: number
@@ -59,7 +60,9 @@ export const TripRecorder: React.FC<TripRecorderProps> = ({ onDistance }) => {
     const key = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
     if (!key) throw new Error('Google Maps API key missing')
 
-    const loadMaps = (): Promise<typeof google> => {
+    type GoogleMaps = typeof window.google
+
+    const loadMaps = (): Promise<GoogleMaps> => {
       if (window.google) return Promise.resolve(window.google)
       return new Promise((resolve, reject) => {
         const script = document.createElement('script')
@@ -72,15 +75,15 @@ export const TripRecorder: React.FC<TripRecorderProps> = ({ onDistance }) => {
       })
     }
 
-    const google = await loadMaps()
+    const maps = await loadMaps()
     // load the routes library which provides DirectionsService
-    await google.maps.importLibrary('routes')
+    await maps.maps.importLibrary('routes')
 
-    const service = new google.maps.DirectionsService()
+    const service = new maps.maps.DirectionsService()
     const { routes } = await service.route({
-      origin: new google.maps.LatLng(orig.lat, orig.lng),
-      destination: new google.maps.LatLng(dest.lat, dest.lng),
-      travelMode: google.maps.TravelMode.DRIVING,
+      origin: new maps.maps.LatLng(orig.lat, orig.lng),
+      destination: new maps.maps.LatLng(dest.lat, dest.lng),
+      travelMode: maps.maps.TravelMode.DRIVING,
     })
     const meters = routes?.[0]?.legs?.[0]?.distance?.value ?? 0
     return meters / 1000
