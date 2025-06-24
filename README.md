@@ -91,11 +91,6 @@ VITE_GOOGLE_MAPS_API_KEY=your-key-here
 
 Make sure the key has the appropriate permissions for Maps JavaScript usage.
 
-> **Note**
-> The Google Maps Directions web service does not enable CORS. The application
-> calculates trip distances using the Maps JavaScript API instead. If you wish to
-> call the web service directly, route the request through a backend or proxy.
-
 ## License
 This project is licensed under the [MIT License](LICENSE).
 

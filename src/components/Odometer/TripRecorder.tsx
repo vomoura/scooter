@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
 
-// Google Maps namespace will be provided by the script loader and added to
-// the global window object. The explicit interface is declared in
-// `src/vite-env.d.ts` so we can safely reference `window.google`.
 
 interface Coords {
   lat: number
@@ -51,6 +48,7 @@ export const TripRecorder: React.FC<TripRecorderProps> = ({ onDistance }) => {
     }
   }
 
+
   /**
    * Loads the Maps JavaScript API and calculates the distance between two
    * points using the client-side DirectionsService. The web service version
@@ -86,6 +84,7 @@ export const TripRecorder: React.FC<TripRecorderProps> = ({ onDistance }) => {
       travelMode: maps.maps.TravelMode.DRIVING,
     })
     const meters = routes?.[0]?.legs?.[0]?.distance?.value ?? 0
+
     return meters / 1000
   }
 
