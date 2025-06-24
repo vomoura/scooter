@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { theme } from './styles/theme'
 import { Hero } from './components/Hero/Hero'
 import { Specs } from './components/Specs/Specs'
 import { DocButton } from './components/DocButton/DocButton'
+import { Odometer } from './components/Odometer/Odometer'
+import { TripRecorder } from './components/Odometer/TripRecorder'
 
 const Container = styled.div`
   background: ${({ theme }) => theme.colors.card};
@@ -23,31 +25,30 @@ const Content = styled.div`
   }
 `
 
-const Title = styled.h1`
-  font-weight: 600;
-  font-size: 1.8rem;
-  margin-bottom: 16px;
+export const App: React.FC = () => {
+  const [totalKm, setTotalKm] = useState(0)
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    font-size: 1.5rem;
-  }
-`
+  const addDistance = (km: number) => setTotalKm((prev) => prev + km)
 
-export const App: React.FC = () => (
-  <ThemeProvider theme={theme}>
-    <Container>
-      <Hero />
-      <Content>
-        <Specs />
-        <DocButton href="https://drive.google.com/file/d/149mgLv0_AskqS3bWHQw7kzyudn5YQX5w/view?usp=drive_link">
-          NFe Scooter
-        </DocButton>
-        <DocButton href="https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf">
-          Resolução Contran Nº 996/2023
-        </DocButton>
-      </Content>
-    </Container>
-  </ThemeProvider>
-)
+  return (
+    <ThemeProvider theme={theme}>
+      <Container>
+        <Hero />
+        <Content>
+          <Odometer totalKm={totalKm} />
+          <TripRecorder onDistance={addDistance} />
+          <Specs />
+          <DocButton href="https://drive.google.com/file/d/149mgLv0_AskqS3bWHQw7kzyudn5YQX5w/view?usp=drive_link">
+            NFe Scooter
+          </DocButton>
+          <DocButton href="https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf">
+            Resolução Contran Nº 996/2023
+          </DocButton>
+        </Content>
+      </Container>
+    </ThemeProvider>
+  )
+}
 
 export default App
+
