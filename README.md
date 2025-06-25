@@ -91,6 +91,14 @@ VITE_GOOGLE_MAPS_API_KEY=your-key-here
 
 Make sure the key has the appropriate permissions for Maps JavaScript usage.
 
+API keys can be restricted by HTTP referrers to protect against unwanted use. If you apply this restriction, add development URLs such as `http://localhost:5173/*` and your GitHub Codespaces URL to the allowed list.
+
+Example configuration in the Google Cloud console:
+
+1. Open **APIs & Services** -> **Credentials** and select your key.
+2. Under **Application restrictions** choose **HTTP referrers (web sites)**.
+3. Add entries like `http://localhost:5173/*` and your Codespaces domain, then save.
+
 ## License
 This project is licensed under the [MIT License](LICENSE).
 
