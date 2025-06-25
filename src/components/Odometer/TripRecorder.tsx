@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-
-
+import { Button } from '../Button/Button'
+import { TripWrapper } from './Odometer.styles'
 
 interface Coords {
   lat: number
@@ -68,25 +68,25 @@ export const TripRecorder: React.FC<TripRecorderProps> = ({ onDistance }) => {
 
     type GoogleMaps = typeof google
 
-      const loadMaps = (): Promise<GoogleMaps> => {
-        if (window.google) return Promise.resolve(window.google)
-        return new Promise((resolve, reject) => {
-          const callback = 'initMapsLoaded'
-          ;(window as any)[callback] = () => {
+    const loadMaps = (): Promise<GoogleMaps> => {
+      if (window.google) return Promise.resolve(window.google)
+      return new Promise((resolve, reject) => {
+        const callback = 'initMapsLoaded'
+          ; (window as any)[callback] = () => {
             resolve(window.google)
             delete (window as any)[callback]
           }
-          const script = document.createElement('script')
-          script.src =
-            `https://maps.googleapis.com/maps/api/js?key=${key}&libraries=routes&loading=async&callback=${callback}`
-          script.async = true
-          script.onerror = () => {
-            delete (window as any)[callback]
-            reject(new Error('Failed to load Google Maps'))
-          }
-          document.head.appendChild(script)
-        })
-      }
+        const script = document.createElement('script')
+        script.src =
+          `https://maps.googleapis.com/maps/api/js?key=${key}&libraries=routes&loading=async&callback=${callback}`
+        script.async = true
+        script.onerror = () => {
+          delete (window as any)[callback]
+          reject(new Error('Failed to load Google Maps'))
+        }
+        document.head.appendChild(script)
+      })
+    }
 
     const maps = await loadMaps()
     // load the routes library which provides DirectionsService
@@ -104,15 +104,15 @@ export const TripRecorder: React.FC<TripRecorderProps> = ({ onDistance }) => {
   }
 
   return (
-    <div>
-      <button onClick={startTrip} disabled={!!start}>
+    <TripWrapper>
+      <Button onClick={startTrip} disabled={!!start}>
         Iniciar
-      </button>
-      <button onClick={endTrip} disabled={!start}>
+      </Button>
+      <Button onClick={endTrip} disabled={!start}>
         Finalizar
-      </button>
+      </Button>
       {error && <p role="alert">{error}</p>}
-    </div>
+    </TripWrapper>
   )
 }
 
