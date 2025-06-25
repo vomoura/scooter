@@ -130,7 +130,7 @@ Error generating stack: `+o.message+`
   @media (max-width: ${({theme:i})=>i.breakpoints.mobile}) {
     padding: 16px;
   }
-`,bh=()=>{const[i,a]=Pn.useState(0),s=d=>a(m=>m+d);return pe.jsxs(Jh,{children:[pe.jsx(Wh,{}),pe.jsxs(qh,{children:[pe.jsx(Xh,{totalKm:i}),pe.jsx(Zh,{onDistance:s}),pe.jsx(Qh,{}),pe.jsx(So,{href:"https://drive.google.com/file/d/149mgLv0_AskqS3bWHQw7kzyudn5YQX5w/view?usp=drive_link",children:"NFe Scooter"}),pe.jsx(So,{href:"https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf",children:"Resolução Contran Nº 996/2023"})]})]})},em={colors:{primary:"#FF6F00",hover:"#E65C00",background:"#F0F2F5",card:"#FFFFFF",text:"#333333"},borderRadius:"12px",shadows:{card:"0 4px 20px rgba(0, 0, 0, 0.1)"},breakpoints:{mobile:"480px"},fonts:{primary:"'Public Sans', sans-serif"}},tm=Uh`
+`,bh=()=>{const[i,a]=Pn.useState(0),s=d=>a(m=>m+d);return pe.jsxs(Jh,{children:[pe.jsx(Wh,{}),pe.jsxs(qh,{children:[pe.jsx(Xh,{totalKm:i}),pe.jsx(Zh,{onDistance:s}),pe.jsx(Qh,{}),pe.jsx(So,{href:"https://drive.google.com/file/d/149mgLv0_AskqS3bWHQw7kzyudn5YQX5w/view?usp=drive_link",children:"NFe Scooter"}),pe.jsx(So,{href:"https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf",children:"Resolução Contran Nº 996/2023"})]})]})},em={colors:{primary:"#e67231",hover:"#E65C00",background:"#F0F2F5",card:"#000000",text:"#F0F2F5"},borderRadius:"12px",shadows:{card:"0 4px 20px rgba(0, 0, 0, 0.1)"},breakpoints:{mobile:"480px"},fonts:{primary:"'Public Sans', sans-serif"}},tm=Uh`
 
   /* reset básico */
   *, *::before, *::after {
