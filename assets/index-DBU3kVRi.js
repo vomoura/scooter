@@ -44,7 +44,7 @@ Error generating stack: `+o.message+`
     height: auto;
     display: block;
   }
-`,Vh="/scooter/assets/scooter-CvST_Iy1.png",Wh=()=>pe.jsx(Bh,{children:pe.jsx("img",{src:Vh,alt:"Scooter"})}),Hh=cn.div`
+`,Vh="/scooter/assets/scooter-CTZS5-rc.png",Wh=()=>pe.jsx(Bh,{children:pe.jsx("img",{src:Vh,alt:"Scooter"})}),Hh=cn.div`
   text-align: left;
   margin-bottom: 24px;
 
