@@ -2,11 +2,11 @@ import type { DefaultTheme } from 'styled-components'
 
 export const theme: DefaultTheme = {
   colors: {
-    primary: '#FF6F00',
+    primary: '#e67231',
     hover: '#E65C00',
     background: '#F0F2F5',
-    card: '#FFFFFF',
-    text: '#333333'
+    card: '#000000',
+    text: '#F0F2F5'
   },
   borderRadius: '12px',
   shadows: {
