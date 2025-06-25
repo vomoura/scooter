@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { Hero } from './components/Hero/Hero'
 import { Specs } from './components/Specs/Specs'
-import { DocButton } from './components/DocButton/DocButton'
+import { Button } from './components/Button/Button'
 import { Odometer } from './components/Odometer/Odometer'
 import { TripRecorder } from './components/Odometer/TripRecorder'
 import styled from 'styled-components'
@@ -38,12 +38,12 @@ export const App: React.FC = () => {
         <Odometer totalKm={totalKm} />
         <TripRecorder onDistance={addDistance} />
         <Specs />
-        <DocButton href="https://drive.google.com/file/d/149mgLv0_AskqS3bWHQw7kzyudn5YQX5w/view?usp=drive_link">
+        <Button href="https://drive.google.com/file/d/149mgLv0_AskqS3bWHQw7kzyudn5YQX5w/view?usp=drive_link">
           NFe Scooter
-        </DocButton>
-        <DocButton href="https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf">
+        </Button>
+        <Button href="https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf">
           Resolução Contran Nº 996/2023
-        </DocButton>
+        </Button>
       </Content>
     </Container>
 
