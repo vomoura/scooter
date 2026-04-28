@@ -99,6 +99,22 @@ Example configuration in the Google Cloud console:
 2. Under **Application restrictions** choose **HTTP referrers (web sites)**.
 3. Add entries like `http://localhost:5173/*` and your Codespaces domain, then save.
 
+### Security checklist for Google Maps API keys
+
+- `VITE_*` variables are bundled in client-side code. Treat this key as **public identifier**, never as a secret.
+- Restrict the key by:
+  - **HTTP referrers** (required for browser apps)
+  - **Allowed APIs only** (Maps JavaScript API and any strictly needed API)
+  - **Budget + quota alerts** in Google Cloud
+- Keep real keys only in local `.env` / CI secrets and never commit them.
+
+To scan the repository history for leaked Google-style API keys:
+
+```bash
+npm run audit:google-key-history
+```
+
+If this command reports hits, rotate/revoke the exposed key immediately and clean history before considering the issue resolved.
+
 ## License
 This project is licensed under the [MIT License](LICENSE).
-
